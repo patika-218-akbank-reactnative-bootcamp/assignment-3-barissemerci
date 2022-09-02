@@ -1,16 +1,18 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import React, {useState} from 'react';
+import React, {useContext} from 'react';
 import { StyleSheet, TextInput, TouchableOpacity, View, Text } from 'react-native';
+import { ThemeContext } from '../context/theme';
 
 
 
 
 const SearchBar = props => {
 
+    const {theme,setTheme,toggleTheme} = useContext(ThemeContext);
 
     return(
 
-   <View style = {styles.container}>
+   <View style = {[styles.container,{backgroundColor:theme.telegramColor}]}>
     <TextInput placeholder='Search for messages or users' style = {styles.textInputStyle}>
         
     </TextInput>
@@ -21,7 +23,6 @@ const SearchBar = props => {
 };
 const styles = StyleSheet.create({
    container:{
-    backgroundColor:'#0088cc'
 
    },
    textInputStyle:{

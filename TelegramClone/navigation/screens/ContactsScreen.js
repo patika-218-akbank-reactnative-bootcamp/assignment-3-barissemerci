@@ -5,6 +5,7 @@ import SearchBar from '../../components/SearchBar';
 import ContactCard from '../../components/ContactCard';
 import { MessagesContext } from '../../context/messages';
 import {useNavigation} from '@react-navigation/native';
+import { ThemeContext } from '../../context/theme';
 
 var conversation;
 
@@ -12,6 +13,8 @@ var conversation;
 
 const ContactScreen = props => {
   const {messages,setMessages,addNewMessages} = useContext(MessagesContext);
+  const {theme,setTheme,toggleTheme} = useContext(ThemeContext);
+
   const navigation = useNavigation();
 
   function findMessages(id) {
@@ -51,7 +54,7 @@ const ContactScreen = props => {
     
         return(
     
-       <View style = {styles.container}>
+       <View style = {[styles.container,{backgroundColor:theme.backgroundColor}]}>
             <SearchBar></SearchBar>
             <FlatList
             

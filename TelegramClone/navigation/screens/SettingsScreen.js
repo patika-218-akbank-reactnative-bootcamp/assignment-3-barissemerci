@@ -4,6 +4,7 @@ import { StyleSheet, TextInput, TouchableOpacity, View, Text, Image } from 'reac
 import {useNavigation} from '@react-navigation/native';
 
 import { UserContext } from '../../context/user';
+import { ThemeContext } from '../../context/theme';
 
 
 const SettingsScreen = props => {
@@ -21,7 +22,7 @@ const SettingsScreen = props => {
       }
     return(
 
-   <View style = {styles.container}>
+   <View style = {[styles.container,{backgroundColor:ThemeContext.backgroundColor}]}>
     <Image style = {styles.imageStyle}  source={{uri:"https://picsum.photos/id/7/150/150"}}  />
     <TouchableOpacity onPress={navigateThemeOptionsScreen} style = {styles.buttonContainer}>
         <Text style = {styles.buttonTextStyle}>Theme</Text>

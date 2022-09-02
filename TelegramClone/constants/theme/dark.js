@@ -1,4 +1,6 @@
 export default{
-
-    backgroundColor:'black'
+    telegramColor:'#03527E',
+    fontColor:'white',
+    backgroundColor:'#17212b',
+    bottomTabColor:'#0e1621'
 }

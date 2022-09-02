@@ -1,5 +1,6 @@
 export default{
     telegramColor:'#0088cc',
-
-    backgroundColor:'white'
+    fontColor:'black',
+    backgroundColor:'white',
+    bottomTabColor:'white',
 }

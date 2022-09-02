@@ -1,6 +1,6 @@
-import *as React from 'react';
-import { StyleSheet, TextInput, TouchableOpacity, View, Text } from 'react-native';
-import {NavigationContainer} from '@react-navigation/native';
+import  React,{useContext} from 'react';
+import { ThemeContext } from '../context/theme';
+
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import ChatsScreen from './screens/ChatsScreen';
 import ContactsScreen from './screens/ContactsScreen';
@@ -14,10 +14,17 @@ const Tab=createBottomTabNavigator();
 
 
 export default function BottomTabContainer() {
+  const {theme,setTheme,toggleTheme} = useContext(ThemeContext);
+
     return(
 
         <Tab.Navigator  screenOptions={{
           headerShown: false,
+          tabBarOptions: {
+            style: {
+                backgroundColor: theme.bottomTabColor,
+            },
+        },
         }}>
             <Tab.Screen options={{
           tabBarLabel: 'Contact',

@@ -14,21 +14,22 @@ const ThemeOptionsScreen = props => {
 
     return(
 
-   <View style = {styles.container}>
+   <View style = {[styles.container,{backgroundColor:theme.backgroundColor}]}>
     <View style = {styles.buttonStyle}>
         <View style ={[styles.imageAndTextStyle, {marginStart:0}]}>
             <TouchableOpacity style = {styles.themeStyle} onPress={()=>{toggleTheme('light')}}>
-            <IconLight  size={100} name="sun" />
+            <IconLight color={theme.fontColor} size={100} name="sun" />
             </TouchableOpacity>
 
-            <Text style= {styles.textStyle}>Light Theme</Text>
+            <Text style= {[styles.textStyle,{color:theme.fontColor}]}>Light Theme</Text>
         </View>
         
         <View style = {styles.imageAndTextStyle}>
             <TouchableOpacity style = {styles.themeStyle} onPress={()=>{toggleTheme('dark')}}>
-            <IconDark size={100} name="moon" />
+            <IconDark color={theme.fontColor} size={100} name="moon" />
             </TouchableOpacity>
-            <Text style= {styles.textStyle}>Dark Theme</Text>
+          
+            <Text style= {[styles.textStyle,{color:theme.fontColor}]}>Dark Theme</Text>
         </View>
     </View>
     
