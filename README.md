@@ -79,5 +79,5 @@ Kullanıcı bilgileri güncellenebilir.
 - ESLint
 - React Context
 
-## Demo video
+
 
