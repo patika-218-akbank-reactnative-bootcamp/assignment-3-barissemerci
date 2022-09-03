@@ -3,4 +3,5 @@ export default{
     fontColor:'black',
     backgroundColor:'white',
     bottomTabColor:'white',
+    active:'#0088cc'
 }

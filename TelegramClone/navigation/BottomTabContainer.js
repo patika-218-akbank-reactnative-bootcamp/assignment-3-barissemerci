@@ -1,5 +1,6 @@
 import  React,{useContext} from 'react';
 import { ThemeContext } from '../context/theme';
+import { StyleSheet, TextInput, TouchableOpacity, View, FlatList,Text, Image } from 'react-native';
 
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import ChatsScreen from './screens/ChatsScreen';
@@ -20,28 +21,26 @@ export default function BottomTabContainer() {
 
         <Tab.Navigator  screenOptions={{
           headerShown: false,
-          tabBarOptions: {
-            style: {
-                backgroundColor: theme.bottomTabColor,
-            },
-        },
+          tabBarStyle: {backgroundColor: theme.bottomTabColor },
+          tabBarActiveTintColor: theme.active,
+          tabBarInactiveTintColor: theme.fontColor,
         }}>
             <Tab.Screen options={{
           tabBarLabel: 'Contact',
-          tabBarIcon: ({ color, size }) => (
-            <IconContact name="contacts" color={color} size={size} />
+          tabBarIcon: ({ size }) => (
+            <IconContact name="contacts" color={theme.fontColor} size={size} />
           ),
         }} name={"ContactsScreen"} component={ContactsScreen}></Tab.Screen>
             <Tab.Screen options={{
           tabBarLabel: 'Chat',
           tabBarIcon: ({ color, size }) => (
-            <IconChat name="chat" color={color} size={size} />
+            <IconChat name="chat" color={theme.fontColor} size={size} />
           ),
         }} name={"ChatsScreen"} component={ChatsScreen}></Tab.Screen>
             <Tab.Screen options={{
           tabBarLabel: 'Settings',
           tabBarIcon: ({ color, size }) => (
-            <IconSettings name="settings" color={color} size={size} />
+            <IconSettings name="settings" color={theme.fontColor} size={size} />
           ),
         }} name={"SettingsContainer"} component={SettingsContainer}></Tab.Screen>
 

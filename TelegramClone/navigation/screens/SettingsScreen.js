@@ -10,6 +10,7 @@ import { ThemeContext } from '../../context/theme';
 const SettingsScreen = props => {
     const navigation = useNavigation();
     const {user,setUser,handleUser} = useContext(UserContext);
+    const {theme,setTheme,toggleTheme} = useContext(ThemeContext);
 
 
    
@@ -22,7 +23,7 @@ const SettingsScreen = props => {
       }
     return(
 
-   <View style = {[styles.container,{backgroundColor:ThemeContext.backgroundColor}]}>
+   <View style = {[styles.container,{backgroundColor:theme.backgroundColor}]}>
     <Image style = {styles.imageStyle}  source={{uri:"https://picsum.photos/id/7/150/150"}}  />
     <TouchableOpacity onPress={navigateThemeOptionsScreen} style = {styles.buttonContainer}>
         <Text style = {styles.buttonTextStyle}>Theme</Text>

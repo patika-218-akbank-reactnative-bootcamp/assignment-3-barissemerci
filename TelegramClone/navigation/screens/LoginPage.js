@@ -2,12 +2,15 @@ import React, {useState,useContext} from 'react';
 import { StyleSheet, TextInput, TouchableOpacity, View, Text } from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import { UserContext } from '../../context/user';
+import { ThemeContext } from '../../context/theme';
 
 import {Picker} from '@react-native-picker/picker';
 
 
 
 const LoginPage = props => {
+    const {theme,setTheme,toggleTheme} = useContext(ThemeContext);
+
     const navigation = useNavigation();
     const {user,setUser,handleUser} = useContext(UserContext);
 
@@ -23,7 +26,7 @@ const LoginPage = props => {
     const [selectedCountry, setSelectedCountry] = useState();
     return(
  
-        <View style = {styles.container}>
+        <View style = {[styles.container,{backgroundColor:theme.backgroundColor}]}>
             <View  style = {styles.textContainer}>
                 
                 <Picker style = {styles.pickerStyle}

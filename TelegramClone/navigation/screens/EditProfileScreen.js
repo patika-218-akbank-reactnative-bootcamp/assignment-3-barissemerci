@@ -2,6 +2,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import React, {useState, useContext} from 'react';
 import { StyleSheet, TextInput, TouchableOpacity, View, Text, Image } from 'react-native';
 import { UserContext } from '../../context/user';
+import { ThemeContext } from '../../context/theme';
 
 
 
@@ -13,10 +14,11 @@ const EditProfileScreen = props => {
     const [name, setName] = useState(user.name);
     const [surname, setSurname] = useState(user.surname);
     const [username, setUserName] = useState(user.username);
-    
+    const {theme,setTheme,toggleTheme} = useContext(ThemeContext);
+
     return(
 
-   <View style = {styles.container}>
+   <View style = {[styles.container,{backgroundColor:theme.backgroundColor}]}>
 
     <View style={styles.textInputs}>
     <Text style={styles.textStyle}>First Name</Text>

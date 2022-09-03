@@ -5,12 +5,16 @@ import ChatCard from '../../components/ChatCard';
 import SearchBar from '../../components/SearchBar';
 import {useNavigation} from '@react-navigation/native';
 import { MessagesContext } from '../../context/messages';
+import { ThemeContext } from '../../context/theme';
+
 var conversation;
 
 
 
 const ChatsScreen = props => {
   const {messages,setMessages,addNewMessages} = useContext(MessagesContext);
+  const {theme,setTheme,toggleTheme} = useContext(ThemeContext);
+
   const navigation = useNavigation();
 
   function findMessages(id) {
@@ -54,7 +58,7 @@ const ChatsScreen = props => {
 
     return(
 
-   <View style = {styles.container}>
+   <View style = {[styles.container,{backgroundColor:theme.backgroundColor}]}>
         <SearchBar></SearchBar>
         <FlatList
         data={messages}
