@@ -1,7 +1,7 @@
-import { createContext } from "react";
+import {createContext} from 'react';
 
 export const MessagesContext = createContext({
-    messages: {},
-    setMessages: () => {}, 
-    addNewMessages: () => {},
+  messages: {},
+  setMessages: () => {},
+  addNewMessages: () => {},
 });

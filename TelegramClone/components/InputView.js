@@ -6,68 +6,77 @@
  * @flow strict-localSS
  */
 
-import React, { useState } from 'react';
+import React, {useState, useContext} from 'react';
 import {StyleSheet, View, TextInput} from 'react-native';
 import IconSmiley from 'react-native-vector-icons/Fontisto';
 import IconAttach from 'react-native-vector-icons/Entypo';
 import IconSend from 'react-native-vector-icons/Ionicons';
 import IconMicrophone from 'react-native-vector-icons/MaterialCommunityIcons';
+import {ThemeContext} from '../context/theme';
 
-const InputView = ({onPress,id}) => {
-  const [focus,setFocus]=useState(0)
-  const [text,setText]=useState('')
+const InputView = ({onPress, id}) => {
+  const {theme} = useContext(ThemeContext);
+
+  const [focus, setFocus] = useState(0);
+  const [text, setText] = useState('');
   return (
     <View style={styles.container}>
-      <View style={styles.inputContainer}>
-        <IconSmiley style={styles.icon} size={27} name="smiley" />
+      <View
+        style={[
+          styles.inputContainer,
+          {backgroundColor: theme.backgroundColor},
+        ]}>
+        <IconSmiley
+          style={styles.icon}
+          color={theme.fontColor}
+          size={27}
+          name="smiley"
+        />
         <TextInput
-        onChangeText={(text)=>{
-      
-          if(text===''){
-            setFocus(0)
-           
-          }
-          else{
-            setFocus(1)
-          }
-          setText(text)
-
-
-
-        }}
+          onChangeText={textNew => {
+            if (textNew === '') {
+              setFocus(0);
+            } else {
+              setFocus(1);
+            }
+            setText(textNew);
+          }}
           multiline={true}
           value={text}
+          placeholderTextColor={theme.fontColor}
           placeholder="Mesaj"
-          style={styles.textInput}
+          style={[styles.textInput, {color: theme.fontColor}]}
         />
 
-        {focus===0 ?  <View style={styles.icons}>
-          <IconAttach style={styles.iconAttach} size={25} name="attachment" />
-          <IconMicrophone
-          style={styles.microphoneIcon}
-          size={30}
-          name="microphone"
-        />
-        </View> : 
-        <View style={styles.icons}>
-        <IconSend style={styles.iconAttach} size={25} name="send" onPress={()=>{
-
-           
-
-              onPress(text,id)
-              setText('')
-        }}/>
+        {focus === 0 ? (
+          <View style={styles.icons}>
+            <IconAttach
+              style={styles.iconAttach}
+              color={theme.fontColor}
+              size={25}
+              name="attachment"
+            />
+            <IconMicrophone
+              style={styles.microphoneIcon}
+              size={30}
+              color={theme.fontColor}
+              name="microphone"
+            />
+          </View>
+        ) : (
+          <View style={styles.icons}>
+            <IconSend
+              style={styles.iconAttach}
+              size={25}
+              name="send"
+              onPress={() => {
+                onPress(text, id);
+                setText('');
+              }}
+            />
+          </View>
+        )}
       </View>
-
-
-        
-        
-        }
-
-       
-      </View>
-
-    
     </View>
   );
 };
@@ -96,7 +105,7 @@ const styles = StyleSheet.create({
   },
   iconAttach: {
     marginRight: 15,
-    alignSelf:'center'
+    alignSelf: 'center',
   },
   icons: {
     flexDirection: 'row',
@@ -111,7 +120,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     marginLeft: 5,
   },
-  
 });
 
 export default InputView;
